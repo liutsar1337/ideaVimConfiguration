@@ -1,0 +1,76 @@
+" Show a few lines of context around the cursor. 
+set scrolloff=8
+set number
+set relativenumber
+set tabstop=4 softtabstop=4
+set shiftwidth=4
+set expandtab
+set smartindent
+
+" Do incremental searching.
+set incsearch
+
+" Don't use Ex mode, use Q for formatting.
+map Q gq
+
+" Highlight copied text
+Plug 'machakann/vim-highlightedyank'
+" Commentary plugin
+Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-surround'
+
+" extensions
+set surround
+
+" easy window navigation
+nnoremap <a-k> gt
+nnoremap <a-j> gT
+nnoremap <c-s-tab> gT
+nnoremap <c-tab> gt
+
+"" Map <leader>d to start debug
+"map <leader>d <Action>(Debug)
+let mapleader = " "
+
+nmap g[ :action ShowUsages<CR>
+nnoremap <C-j> :cnext<CR>
+nnoremap <C-k> :cprev<CR>
+vnoremap <leader>p "_dP
+
+" For visual mode selection
+vmap <leader>y "+y
+" For normal mode line yank
+nnoremap <leader>y "+yy
+nnoremap <leader>Y gg"+yG
+
+" code Refactoring
+:map <leader>rr <Action>(RenameElement)
+:map <leader>RR <Action>(Refactorings.QuickListPopupAction)
+:map <leader>sw <Action>(SurroundWith)
+:map <leader>ee <Action>(ShowErrorDescription)
+:map <leader>hh <Action>(QuickImplementations)
+:map <leader>hu <Action>(HighlightUsagesInFile)
+:map <leader>so <Action>(SelectAllOccurrences)
+
+" find files
+:map <leader>gg <Action>(GotoFile)
+" AceJump
+:map ff <Action>(AceAction)
+:map fv <Action>(AceTargetAction)
+:map fl <Action>(AceLineAction)
+
+" Navigation Closing tabs
+nnoremap <leader>wr :set wrap!<CR>
+:map <leader>q <Action>(CloseEditor)
+:map <leader>Q <Action>(CloseAllEditors)
+nnoremap <leader>to :action CloseAllEditorsButActive<CR>
+nnoremap <leader>tl :action CloseAllToTheLeft<CR>
+nnoremap <leader>tr :action CloseAllToTheRight<CR>
+
+vnoremap J :m '>+1<CR>gv=gv
+vnoremap K :m '<-2<CR>gv=gv
+vnoremap <leader>,t <Esc>`<i<<C-r>=input('Tag: ')<CR>><Esc>`>a</><Esc>F<i
+
+"" Map \b to toggle the breakpoint on the current line
+"map \b <Action>(ToggleLineBreakpoint)
+
